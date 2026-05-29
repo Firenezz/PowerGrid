@@ -37,6 +37,13 @@ allprojects {
 		maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven" } // Forge Config API Port
 //		maven { url = "https://maven.ithundxr.dev/snapshots" } // Registrate
 		maven { url = "https://maven.tterrag.com/" } // Registrate
+		maven { // CC: Tweaked
+			url = "https://maven.squiddev.cc"
+			content {
+				includeGroup("cc.tweaked")
+				includeModule("org.squiddev", "Cobalt")
+			}
+		}
 
 		maven {
 			url = "https://maven.createmod.net"
@@ -162,6 +169,8 @@ subprojects {
 	}
 
 	dependencies {
+		minecraft "com.mojang:minecraft:$rootProject.minecraft_version"
+
 		implementation(include("org.ejml:ejml-core:0.44.0"))
 		implementation(include("org.ejml:ejml-simple:0.44.0"))
 		implementation(include("org.ejml:ejml-ddense:0.44.0"))
@@ -329,6 +338,10 @@ dependencies {
 	// Roughly Enough Items - Common
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api:${rei_version}"
 //	modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin:${rei_version}"
+
+	// ComputerCraft
+	compileOnly "cc.tweaked:cc-tweaked-${minecraft_version}-common-api:${cc_tweaked_version}"
+	compileOnly "cc.tweaked:cc-tweaked-${minecraft_version}-core-api:${cc_tweaked_version}"
 
 	// Support for unit tests
 	testImplementation "net.fabricmc:fabric-loader-junit:${project.loader_version}"

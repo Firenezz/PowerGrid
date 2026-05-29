@@ -33,6 +33,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Blocks;
 import org.patryk3211.powergrid.circuits.components.Components;
 import org.patryk3211.powergrid.collections.*;
+import org.patryk3211.powergrid.compat.computercraft.ComputerCraftProxy;
 import org.patryk3211.powergrid.compat.sable.SableUtils;
 import org.patryk3211.powergrid.compat.simulated.SimulatedBridge;
 import org.patryk3211.powergrid.electricity.GlobalElectricNetworks;
@@ -87,6 +88,8 @@ public class PowerGrid {
 		if(dev.architectury.platform.Platform.isModLoaded("simulated")) {
 			SimulatedBridge.init();
 		}
+
+		ComputerCraftProxy.register();
 
 		ModdedPackets.register();
 		ModPackets.PACKETS.registerC2SListener();

@@ -29,6 +29,8 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import org.patryk3211.powergrid.compat.computercraft.AbstractComputerBehaviour;
+import org.patryk3211.powergrid.compat.computercraft.ComputerCraftProxy;
 import org.patryk3211.powergrid.electricity.base.ElectricBlockEntity;
 import org.patryk3211.powergrid.electricity.info.customdisplay.CustomDisplayBehaviour;
 import org.patryk3211.powergrid.utility.Lang;
@@ -46,6 +48,7 @@ public abstract class GaugeBlockEntity extends ElectricBlockEntity implements IH
     protected CustomDisplayBehaviour display;
     protected float maxValue;
 
+    public AbstractComputerBehaviour computerBehaviour;
     public float dialTarget;
     public float prevDialState;
     public float dialState;
@@ -76,6 +79,7 @@ public abstract class GaugeBlockEntity extends ElectricBlockEntity implements IH
         super.addBehaviours(behaviours);
         display = new CustomDisplayBehaviour(this, getUnit(), this instanceof CurrentGaugeBlockEntity, this::getMaxValue, this::getColor);
         behaviours.add(display);
+        behaviours.add(computerBehaviour = ComputerCraftProxy.getBehaviourFor(this));
     }
 
     public float getProgress() {
