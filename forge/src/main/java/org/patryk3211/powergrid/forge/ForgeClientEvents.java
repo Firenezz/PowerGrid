@@ -18,7 +18,6 @@ package org.patryk3211.powergrid.forge;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.level.LevelEvent;
 import org.patryk3211.powergrid.electricity.ClientElectricNetwork;
@@ -37,10 +36,5 @@ public class ForgeClientEvents {
         if(event.getLevel().isClientSide) {
             EntityDataS2CPacket.clientEntityAdded(event.getEntity());
         }
-    }
-
-    @SubscribeEvent
-    public static void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
-
     }
 }

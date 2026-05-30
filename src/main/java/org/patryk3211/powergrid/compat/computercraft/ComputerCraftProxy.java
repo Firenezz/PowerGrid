@@ -12,12 +12,13 @@ public class ComputerCraftProxy {
     private static Function<SmartBlockEntity, ? extends AbstractComputerBehaviour> computerFactory;
 
     public static void register() {
-        fallbackFactory = ComputerBehaviour::new;
+        fallbackFactory = FallbackComputerBehaviour::new;
         Mods.COMPUTERCRAFT.executeIfInstalled(() -> ComputerCraftProxy::registerWithDependency);
     }
 
     public static void registerWithDependency() {
         computerFactory = ComputerBehaviour::new;
+        ComputerBehaviour.registerItemDetailProviders();
     }
 
     public static AbstractComputerBehaviour getBehaviourFor(SmartBlockEntity smartBlockEntity) {

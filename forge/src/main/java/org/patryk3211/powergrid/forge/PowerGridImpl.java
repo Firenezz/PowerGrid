@@ -229,6 +229,7 @@ public class PowerGridImpl {
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModdedBlockEntities.PUNCH_CARD_READER.get(),
                 (be, side) -> ((PunchCardReaderBlockEntityImpl) be).getItemHandler(side));
+        ComputerCraftCapabilities.register(event);
     }
 
     @SubscribeEvent
