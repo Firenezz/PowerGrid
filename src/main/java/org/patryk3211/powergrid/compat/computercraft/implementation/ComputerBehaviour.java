@@ -13,6 +13,8 @@ import org.patryk3211.powergrid.compat.computercraft.AbstractComputerBehaviour;
 import org.patryk3211.powergrid.compat.computercraft.implementation.peripheral.CurrentGaugePeripheral;
 import org.patryk3211.powergrid.compat.computercraft.implementation.peripheral.PowerGaugePeripheral;
 import org.patryk3211.powergrid.compat.computercraft.implementation.peripheral.VoltageGaugePeripheral;
+import org.patryk3211.powergrid.compat.computercraft.implementation.peripheral.DacPeripheral;
+import org.patryk3211.powergrid.electricity.dac.DacBlockEntity;
 import org.patryk3211.powergrid.electricity.gauge.CurrentGaugeBlockEntity;
 import org.patryk3211.powergrid.electricity.gauge.PowerGaugeBlockEntity;
 import org.patryk3211.powergrid.electricity.gauge.VoltageGaugeBlockEntity;
@@ -38,6 +40,8 @@ public class ComputerBehaviour extends AbstractComputerBehaviour {
             return () -> new CurrentGaugePeripheral(cgbe);
         if (be instanceof PowerGaugeBlockEntity pgbe)
             return () -> new PowerGaugePeripheral(pgbe);
+        if (be instanceof DacBlockEntity dac)
+            return () -> new DacPeripheral(dac);
 
         throw new IllegalArgumentException(
                 "No peripheral available for " + BuiltInRegistries.BLOCK_ENTITY_TYPE.getKey(be.getType()));

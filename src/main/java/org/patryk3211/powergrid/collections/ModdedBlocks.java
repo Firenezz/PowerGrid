@@ -71,6 +71,7 @@ import org.patryk3211.powergrid.electricity.electricswitch.*;
 import org.patryk3211.powergrid.electricity.electromagnet.ElectromagnetBlock;
 import org.patryk3211.powergrid.electricity.fan.ElectricFanBlock;
 import org.patryk3211.powergrid.electricity.fuse.FuseHolderBlock;
+import org.patryk3211.powergrid.electricity.dac.DacBlock;
 import org.patryk3211.powergrid.electricity.gauge.CurrentGaugeBlock;
 import org.patryk3211.powergrid.electricity.gauge.PowerGaugeBlock;
 import org.patryk3211.powergrid.electricity.gauge.VoltageGaugeBlock;
@@ -233,6 +234,16 @@ public class ModdedBlocks {
             .transform(CThermal.maxPower(35, 2.0f))
             .transform(pickaxeOnly())
             .transform(DisplaySource.displaySource(ModdedDisplaySources.ELECTRIC_GAUGE))
+            .item()
+                .model(gauge("block/gauge/item_power", "block/conductive_gauge"))
+                .build()
+            .register();
+
+    public static final BlockEntry<DacBlock> DAC = REGISTRATE.block("dac", DacBlock::new)
+            .blockstate(horizontalBlock("block/gauge/conductive/base_power"))
+            .initialProperties(SharedProperties::softMetal)
+            .transform(pickaxeOnly())
+            .lang("DAC")
             .item()
                 .model(gauge("block/gauge/item_power", "block/conductive_gauge"))
                 .build()
