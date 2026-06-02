@@ -48,7 +48,7 @@ public class DacBlock extends HorizontalElectricBlock implements IBE<DacBlockEnt
     }
 
     /** Bottom face — green control terminal and wired modem attach here. */
-    public static Direction getPeripheralFace(BlockState state) {
+    public static Direction getPeripheralFace(BlockState _state) {
         return Direction.DOWN;
     }
 
